@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Dashboard - Replate</title>
+    <link rel="stylesheet" href="restaurant-dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🍽️</span>
+                    <span class="logo-text">REPLATE</span>
+                </a>
+                <div class="nav-right">
+                    <span class="user-name" id="userName">NGO Name</span>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-page="overview">
+                    <span class="icon">📊</span>
+                    <span>Overview</span>
+                </li>
+                <li class="menu-item" data-page="available">
+                    <span class="icon">🍴</span>
+                    <span>Available Food</span>
+                </li>
+                <li class="menu-item" data-page="requests">
+                    <span class="icon">📋</span>
+                    <span>My Requests</span>
+                </li>
+                <li class="menu-item" data-page="history">
+                    <span class="icon">📜</span>
+                    <span>History</span>
+                </li>
+                <li class="menu-item" data-page="profile">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="page active" id="overview">
+                <div class="page-header">
+                    <h1>Dashboard Overview</h1>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🍽️</div>
+                        <div class="stat-info">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Total Donations Received</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚖️</div>
+                        <div class="stat-info">
+                            <div class="stat-number">180 kg</div>
+                            <div class="stat-label">Food Received</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <div class="stat-number">600+</div>
+                            <div class="stat-label">People Fed</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🤝</div>
+                        <div class="stat-info">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Active Restaurants</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">✅</div>
+                            <div class="activity-info">
+                                <div class="activity-title">Donation Received</div>
+                                <div class="activity-meta">Green Curry Restaurant • 15 kg • 2 hours ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📤</div>
+                            <div class="activity-info">
+                                <div class="activity-title">Request Sent</div>
+                                <div class="activity-meta">Spice Garden • 10 kg • 5 hours ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="available">
+                <div class="page-header">
+                    <h1>Available Food Nearby</h1>
+                </div>
+
+                <div class="requests-list">
+                    <div class="request-card">
+                        <div class="request-header">
+                            <div class="ngo-info">
+                                <h3>Green Curry Restaurant</h3>
+                                <p>📍 1.2 km away • North Indian Cuisine</p>
+                            </div>
+                            <span class="request-time">30 mins ago</span>
+                        </div>
+                        <div class="request-body">
+                            <p><strong>Food Available:</strong> Rice, Dal, Mixed Vegetables</p>
+                            <p><strong>Quantity:</strong> 20 kg</p>
+                            <p><strong>Can Serve:</strong> ~65 people</p>
+                            <p><strong>Pickup By:</strong> Today, 8:00 PM</p>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-success">Request This Food</button>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="request-card">
+                        <div class="request-header">
+                            <div class="ngo-info">
+                                <h3>Spice Garden</h3>
+                                <p>📍 2.5 km away • Multi-Cuisine</p>
+                            </div>
+                            <span class="request-time">1 hour ago</span>
+                        </div>
+                        <div class="request-body">
+                            <p><strong>Food Available:</strong> Bread, Curry, Salad</p>
+                            <p><strong>Quantity:</strong> 12 kg</p>
+                            <p><strong>Can Serve:</strong> ~40 people</p>
+                            <p><strong>Pickup By:</strong> Today, 9:00 PM</p>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-success">Request This Food</button>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="requests">
+                <div class="page-header">
+                    <h1>My Requests</h1>
+                </div>
+                <p class="empty-state">No pending requests</p>
+            </div>
+
+            <div class="page" id="history">
+                <div class="page-header">
+                    <h1>Donation History</h1>
+                </div>
+
+                <div class="history-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Restaurant</th>
+                                <th>Food Item</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Feb 01, 2026</td>
+                                <td>Green Curry Restaurant</td>
+                                <td>Rice & Curry</td>
+                                <td>15 kg</td>
+                                <td><span class="status-badge success">Received</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jan 31, 2026</td>
+                                <td>Spice Garden</td>
+                                <td>Bread & Curry</td>
+                                <td>10 kg</td>
+                                <td><span class="status-badge success">Received</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="page" id="profile">
+                <div class="page-header">
+                    <h1>Settings</h1>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Organization Information</h2>
+                    <div class="profile-info" id="profileInfo">
+                        <p><strong>NGO Name:</strong> <span id="ngoName">Loading...</span></p>
+                        <p><strong>Phone:</strong> <span id="ngoPhone">Loading...</span></p>
+                        <p><strong>Email:</strong> <span id="ngoEmail">Loading...</span></p>
+                        <p><strong>Address:</strong> <span id="ngoAddress">Loading...</span></p>
+                    </div>
+                    <button class="btn btn-secondary">Edit Information</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="ngo-dashboard.js"></script>
+</body>
+</html>

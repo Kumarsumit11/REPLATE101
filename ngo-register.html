@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Registration - Replate</title>
+    <link rel="stylesheet" href="ngo-register.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🍽️</span>
+                    <span class="logo-text">REPLATE</span>
+                </a>
+                <a href="get-started.html" class="back-link">← Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <section class="registration-section">
+        <div class="container">
+            <div class="registration-wrapper">
+                <div class="form-header fade-in">
+                    <div class="icon-circle">🤝</div>
+                    <h1>Register Your NGO</h1>
+                    <p>Join our network to access fresh food donations</p>
+                </div>
+
+                <div class="progress-bar fade-in">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Organization Info</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Contact Details</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Verification</div>
+                    </div>
+                </div>
+
+                <form id="ngoForm" class="registration-form reveal">
+                    <!-- Step 1: Organization Information -->
+                    <div class="form-step active" data-step="1">
+                        <h2>Organization Information</h2>
+                        
+                        <div class="form-group">
+                            <label for="ngoName">NGO/Organization Name *</label>
+                            <input type="text" id="ngoName" name="ngoName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="registrationNumber">NGO Registration Number *</label>
+                            <input type="text" id="registrationNumber" name="registrationNumber" required>
+                            <small>Trust/Society/Section 8 Company Registration Number</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ngoType">Type of Organization *</label>
+                            <select id="ngoType" name="ngoType" required>
+                                <option value="">Select Type</option>
+                                <option value="trust">Public Trust</option>
+                                <option value="society">Society</option>
+                                <option value="section8">Section 8 Company</option>
+                                <option value="charitable">Charitable Trust</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="establishedYear">Year Established *</label>
+                            <input type="number" id="establishedYear" name="establishedYear" min="1900" max="2026" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="focusArea">Primary Focus Area *</label>
+                            <select id="focusArea" name="focusArea" required>
+                                <option value="">Select Focus Area</option>
+                                <option value="hunger">Hunger Relief</option>
+                                <option value="homeless">Homeless Support</option>
+                                <option value="children">Children Welfare</option>
+                                <option value="elderly">Elderly Care</option>
+                                <option value="community">Community Development</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="peopleServed">Number of People Served Daily *</label>
+                            <input type="number" id="peopleServed" name="peopleServed" min="1" required>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next Step →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Contact Details -->
+                    <div class="form-step" data-step="2">
+                        <h2>Contact Details</h2>
+
+                        <div class="form-group">
+                            <label for="contactPerson">Contact Person Name *</label>
+                            <input type="text" id="contactPerson" name="contactPerson" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="designation">Designation *</label>
+                            <input type="text" id="designation" name="designation" placeholder="e.g., Director, Manager" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number *</label>
+                                <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="alternatePhone">Alternate Phone</label>
+                                <input type="tel" id="alternatePhone" name="alternatePhone" pattern="[0-9]{10}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Organization Address *</label>
+                            <textarea id="address" name="address" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pincode">Pincode *</label>
+                                <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="website">Website (if any)</label>
+                            <input type="url" id="website" name="website" placeholder="https://yourwebsite.org">
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(1)">← Previous</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next Step →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Verification -->
+                    <div class="form-step" data-step="3">
+                        <h2>Verification & Documents</h2>
+
+                        <div class="form-group">
+                            <label for="pan">PAN Number (Organization) *</label>
+                            <input type="text" id="pan" name="pan" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" required>
+                            <small>10-character PAN (e.g., AAAAA1234A)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aadhaar">Aadhaar Card Number (Contact Person) *</label>
+                            <input type="text" id="aadhaar" name="aadhaar" pattern="[0-9]{12}" required>
+                            <small>12-digit Aadhaar number</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="80g">80G Certificate Number (if applicable)</label>
+                            <input type="text" id="80g" name="80g">
+                            <small>Tax exemption certificate number</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fcra">FCRA Registration (if applicable)</label>
+                            <input type="text" id="fcra" name="fcra">
+                            <small>Foreign Contribution Regulation Act registration</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bankAccount">Bank Account Number *</label>
+                            <input type="text" id="bankAccount" name="bankAccount" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ifscCode">IFSC Code *</label>
+                            <input type="text" id="ifscCode" name="ifscCode" pattern="[A-Z]{4}0[A-Z0-9]{6}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span>I agree to the Terms & Conditions and Privacy Policy *</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notifications" name="notifications" checked>
+                                <span>Send me notifications about available food donations</span>
+                            </label>
+                        </div>
+
+                        <div class="info-box">
+                            <p><strong>📋 What happens next?</strong></p>
+                            <ul>
+                                <li>Our team will verify your organization within 24-48 hours</li>
+                                <li>You'll receive a confirmation email once approved</li>
+                                <li>You can start receiving food donation notifications immediately</li>
+                                <li>Access real-time updates on nearby food availability</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(2)">← Previous</button>
+                            <button
+  type="button"
+  class="btn btn-primary btn-submit"
+  onclick="window.location.href='ngo-dashboard.html'">
+  Complete Registration
+</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Replate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="ngo-register.js"></script>
+</body>
+</html>

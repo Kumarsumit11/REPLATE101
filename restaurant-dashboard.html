@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Dashboard - Replate</title>
+    <link rel="stylesheet" href="restaurant-dashboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🍽️</span>
+                    <span class="logo-text">REPLATE</span>
+                </a>
+                <div class="nav-right">
+                    <span class="user-name" id="userName">Restaurant Name</span>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-page="overview">
+                    <span class="icon">📊</span>
+                    <span>Overview</span>
+                </li>
+                <li class="menu-item" data-page="donations">
+                    <span class="icon">🍴</span>
+                    <span>Active Donations</span>
+                </li>
+                <li class="menu-item" data-page="requests">
+                    <span class="icon">📋</span>
+                    <span>Requests</span>
+                </li>
+                <li class="menu-item" data-page="history">
+                    <span class="icon">📜</span>
+                    <span>History</span>
+                </li>
+                <li class="menu-item" data-page="profile">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Page -->
+            <div class="page active" id="overview">
+                <div class="page-header">
+                    <h1>Dashboard Overview</h1>
+                    <button class="btn btn-primary" onclick="openDonationModal()">+ List New Food</button>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🍽️</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="totalDonations">0</div>
+                            <div class="stat-label">Total Donations</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🤝</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="activeDonations">0</div>
+                            <div class="stat-label">Active Listings</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚖️</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="foodSaved">0 kg</div>
+                            <div class="stat-label">Food Saved</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🌱</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="co2Saved">0 kg</div>
+                            <div class="stat-label">CO₂ Reduced</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="section-card">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list" id="activityList">
+                        <div class="activity-item">
+                            <div class="activity-icon">✅</div>
+                            <div class="activity-info">
+                                <div class="activity-title">Food Successfully Donated</div>
+                                <div class="activity-meta">Hope Foundation • 15 kg • 2 hours ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">📥</div>
+                            <div class="activity-info">
+                                <div class="activity-title">New Request Received</div>
+                                <div class="activity-meta">Community Kitchen • 10 kg • 5 hours ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🍴</div>
+                            <div class="activity-info">
+                                <div class="activity-title">Food Listed</div>
+                                <div class="activity-meta">Rice & Curry • 20 kg • Yesterday</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Donations Page -->
+            <div class="page" id="donations">
+                <div class="page-header">
+                    <h1>Active Donations</h1>
+                    <button class="btn btn-primary" onclick="openDonationModal()">+ List New Food</button>
+                </div>
+
+                <div class="donations-grid" id="donationsGrid">
+                    <!-- Donation cards will be dynamically added here -->
+                    <p class="empty-state">No active donations. Click "List New Food" to get started!</p>
+                </div>
+            </div>
+
+            <!-- Requests Page -->
+            <div class="page" id="requests">
+                <div class="page-header">
+                    <h1>Food Requests from NGOs</h1>
+                </div>
+
+                <div class="requests-list" id="requestsList">
+                    <div class="request-card">
+                        <div class="request-header">
+                            <div class="ngo-info">
+                                <h3>Hope Foundation</h3>
+                                <p>📍 2.5 km away • Hunger Relief</p>
+                            </div>
+                            <span class="request-time">2 hours ago</span>
+                        </div>
+                        <div class="request-body">
+                            <p><strong>Requested:</strong> Rice, Dal, Vegetables</p>
+                            <p><strong>Quantity:</strong> 15 kg</p>
+                            <p><strong>Serves:</strong> ~50 people</p>
+                            <p><strong>Pickup Time:</strong> Today, 6:00 PM - 8:00 PM</p>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-success">Accept Request</button>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="request-card">
+                        <div class="request-header">
+                            <div class="ngo-info">
+                                <h3>Community Kitchen</h3>
+                                <p>📍 1.8 km away • Community Development</p>
+                            </div>
+                            <span class="request-time">5 hours ago</span>
+                        </div>
+                        <div class="request-body">
+                            <p><strong>Requested:</strong> Any surplus food</p>
+                            <p><strong>Quantity:</strong> 10-20 kg</p>
+                            <p><strong>Serves:</strong> ~40 people</p>
+                            <p><strong>Pickup Time:</strong> Tomorrow, 5:00 PM - 7:00 PM</p>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-success">Accept Request</button>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History Page -->
+            <div class="page" id="history">
+                <div class="page-header">
+                    <h1>Donation History</h1>
+                </div>
+
+                <div class="history-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Food Item</th>
+                                <th>Quantity</th>
+                                <th>Recipient</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Feb 01, 2026</td>
+                                <td>Rice & Curry</td>
+                                <td>15 kg</td>
+                                <td>Hope Foundation</td>
+                                <td><span class="status-badge success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jan 31, 2026</td>
+                                <td>Bread & Sandwiches</td>
+                                <td>8 kg</td>
+                                <td>Community Kitchen</td>
+                                <td><span class="status-badge success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jan 30, 2026</td>
+                                <td>Mixed Vegetables</td>
+                                <td>12 kg</td>
+                                <td>Helping Hands NGO</td>
+                                <td><span class="status-badge success">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Profile Page -->
+            <div class="page" id="profile">
+                <div class="page-header">
+                    <h1>Settings</h1>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Restaurant Information</h2>
+                    <div class="profile-info" id="profileInfo">
+                        <p><strong>Restaurant Name:</strong> <span id="restaurantName">Loading...</span></p>
+                        <p><strong>Phone:</strong> <span id="restaurantPhone">Loading...</span></p>
+                        <p><strong>Email:</strong> <span id="restaurantEmail">Loading...</span></p>
+                        <p><strong>Address:</strong> <span id="restaurantAddress">Loading...</span></p>
+                    </div>
+                    <button class="btn btn-secondary">Edit Information</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Donation Modal -->
+    <div class="modal" id="donationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>List New Food Donation</h2>
+                <button class="modal-close" onclick="closeDonationModal()">&times;</button>
+            </div>
+            <form id="donationForm">
+                <div class="form-group">
+                    <label for="foodItem">Food Item *</label>
+                    <input type="text" id="foodItem" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity (in kg) *</label>
+                    <input type="number" id="quantity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="pickupTime">Available for Pickup</label>
+                    <input type="datetime-local" id="pickupTime">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeDonationModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">List Food</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="restaurant-dashboard.js"></script>
+</body>
+</html>

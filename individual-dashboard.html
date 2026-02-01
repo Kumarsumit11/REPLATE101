@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual Dashboard - Replate</title>
+    <link rel="stylesheet" href="restaurant-dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🍽️</span>
+                    <span class="logo-text">REPLATE</span>
+                </a>
+                <div class="nav-right">
+                    <span class="user-name" id="userName">User Name</span>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-page="overview">
+                    <span class="icon">📊</span>
+                    <span>Overview</span>
+                </li>
+                <li class="menu-item" data-page="available">
+                    <span class="icon">🍴</span>
+                    <span>Available Food</span>
+                </li>
+                <li class="menu-item" data-page="donate">
+                    <span class="icon">❤️</span>
+                    <span>Donate Items</span>
+                </li>
+                <li class="menu-item" data-page="history">
+                    <span class="icon">📜</span>
+                    <span>History</span>
+                </li>
+                <li class="menu-item" data-page="profile">
+                    <span class="icon">⚙️</span>
+                    <span>Settings</span>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="page active" id="overview">
+                <div class="page-header">
+                    <h1>Welcome Back!</h1>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🍽️</div>
+                        <div class="stat-info">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Food Received</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">❤️</div>
+                        <div class="stat-info">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Items Donated</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🌱</div>
+                        <div class="stat-info">
+                            <div class="stat-number">7</div>
+                            <div class="stat-label">Total Interactions</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">✅</div>
+                            <div class="activity-info">
+                                <div class="activity-title">Food Received</div>
+                                <div class="activity-meta">Community Kitchen • 3 kg • 1 day ago</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">❤️</div>
+                            <div class="activity-info">
+                                <div class="activity-title">Item Donated</div>
+                                <div class="activity-meta">Books • Hope Foundation • 3 days ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="available">
+                <div class="page-header">
+                    <h1>Available Food in Your Area</h1>
+                </div>
+
+                <div class="requests-list">
+                    <div class="request-card">
+                        <div class="request-header">
+                            <div class="ngo-info">
+                                <h3>Community Kitchen</h3>
+                                <p>📍 0.8 km away • NGO</p>
+                            </div>
+                            <span class="request-time">Today</span>
+                        </div>
+                        <div class="request-body">
+                            <p><strong>Food Available:</strong> Fresh Meals</p>
+                            <p><strong>Pickup Time:</strong> 6:00 PM - 7:00 PM</p>
+                            <p><strong>Location:</strong> 123 Main Street</p>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-success">Request Food</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page" id="donate">
+                <div class="page-header">
+                    <h1>Donate Items</h1>
+                    <button class="btn btn-primary" onclick="openDonateModal()">+ Add Item</button>
+                </div>
+                <p class="empty-state">You haven't donated any items yet</p>
+            </div>
+
+            <div class="page" id="history">
+                <div class="page-header">
+                    <h1>Your History</h1>
+                </div>
+
+                <div class="history-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Details</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jan 31, 2026</td>
+                                <td>Received</td>
+                                <td>Food from Community Kitchen</td>
+                                <td><span class="status-badge success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Jan 28, 2026</td>
+                                <td>Donated</td>
+                                <td>Books to Hope Foundation</td>
+                                <td><span class="status-badge success">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="page" id="profile">
+                <div class="page-header">
+                    <h1>Settings</h1>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Personal Information</h2>
+                    <div class="profile-info" id="profileInfo">
+                        <p><strong>Name:</strong> <span id="fullName">Loading...</span></p>
+                        <p><strong>Phone:</strong> <span id="userPhone">Loading...</span></p>
+                        <p><strong>Email:</strong> <span id="userEmail">Loading...</span></p>
+                        <p><strong>City:</strong> <span id="userCity">Loading...</span></p>
+                    </div>
+                    <button class="btn btn-secondary">Edit Information</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="individual-dashboard.js"></script>
+</body>
+</html>

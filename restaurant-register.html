@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Registration - Replate</title>
+    <link rel="stylesheet" href="restaurant-register.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🍽️</span>
+                    <span class="logo-text">REPLATE</span>
+                </a>
+                <a href="get-started.html" class="back-link">← Back</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <section class="registration-section">
+        <div class="container">
+            <div class="registration-wrapper">
+                <div class="form-header fade-in">
+                    <div class="icon-circle">🍴</div>
+                    <h1>Register Your Restaurant</h1>
+                    <p>Join our network of restaurants fighting food waste</p>
+                </div>
+
+                <div class="progress-bar fade-in">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Basic Info</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Business Details</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Verification</div>
+                    </div>
+                </div>
+
+                <form id="restaurantForm" class="registration-form reveal">
+                    <!-- Step 1: Basic Information -->
+                    <div class="form-step active" data-step="1">
+                        <h2>Basic Information</h2>
+                        
+                        <div class="form-group">
+                            <label for="restaurantName">Restaurant Name *</label>
+                            <input type="text" id="restaurantName" name="restaurantName" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ownerName">Owner/Manager Name *</label>
+                                <input type="text" id="ownerName" name="ownerName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number *</label>
+                                <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Restaurant Address *</label>
+                            <textarea id="address" name="address" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pincode">Pincode *</label>
+                                <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next Step →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Business Details -->
+                    <div class="form-step" data-step="2">
+                        <h2>Business Details</h2>
+
+                        <div class="form-group">
+                            <label for="gstin">GSTIN Number *</label>
+                            <input type="text" id="gstin" name="gstin" pattern="[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}" required>
+                            <small>15-character GSTIN (e.g., 22AAAAA0000A1Z5)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fssai">FSSAI License Number *</label>
+                            <input type="text" id="fssai" name="fssai" pattern="[0-9]{14}" required>
+                            <small>14-digit FSSAI license number</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="businessType">Type of Business *</label>
+                            <select id="businessType" name="businessType" required>
+                                <option value="">Select Type</option>
+                                <option value="restaurant">Restaurant</option>
+                                <option value="cafe">Cafe</option>
+                                <option value="hotel">Hotel</option>
+                                <option value="catering">Catering Service</option>
+                                <option value="bakery">Bakery</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cuisineType">Cuisine Type</label>
+                            <input type="text" id="cuisineType" name="cuisineType" placeholder="e.g., Indian, Chinese, Italian">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="operatingHours">Operating Hours *</label>
+                            <input type="text" id="operatingHours" name="operatingHours" placeholder="e.g., 9:00 AM - 11:00 PM" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="avgDailyFood">Average Daily Surplus Food (in kg) *</label>
+                            <input type="number" id="avgDailyFood" name="avgDailyFood" min="1" required>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(1)">← Previous</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next Step →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Verification -->
+                    <div class="form-step" data-step="3">
+                        <h2>Verification & Documents</h2>
+
+                        <div class="form-group">
+                            <label for="aadhaar">Aadhaar Card Number (Owner) *</label>
+                            <input type="text" id="aadhaar" name="aadhaar" pattern="[0-9]{12}" required>
+                            <small>12-digit Aadhaar number</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bankAccount">Bank Account Number</label>
+                            <input type="text" id="bankAccount" name="bankAccount">
+                            <small>For tax benefit credits (optional)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ifscCode">IFSC Code</label>
+                            <input type="text" id="ifscCode" name="ifscCode" pattern="[A-Z]{4}0[A-Z0-9]{6}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <span>I agree to the Terms & Conditions and Privacy Policy *</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="notifications" name="notifications" checked>
+                                <span>Send me notifications about food requests and updates</span>
+                            </label>
+                        </div>
+
+                        <div class="info-box">
+                            <p><strong>📋 What happens next?</strong></p>
+                            <ul>
+                                <li>Our team will verify your documents within 24-48 hours</li>
+                                <li>You'll receive a confirmation email once approved</li>
+                                <li>You can start listing surplus food immediately after approval</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="prevStep(2)">← Previous</button>
+                            <button
+  type="button"
+  class="btn btn-primary btn-submit"
+  onclick="window.location.href='restaurant-dashboard.html'">
+  Complete Registration
+</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Replate. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="restaurant-register.js"></script>
+</body>
+</html>
