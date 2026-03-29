@@ -540,3 +540,16 @@ tbody tr:hover {
         flex-direction: column;
     }
 }
+/* Google Maps Button */
+.btn-map {
+    background: var(--accent-orange);
+    color: var(--white);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-map:hover {
+    background: #e85a2a;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
